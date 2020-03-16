@@ -1,7 +1,5 @@
 package com.gustavo.codenationProject.http;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -21,12 +19,8 @@ public class FileUploadService {
 
 	private RestTemplate restTemplate;
 
-	@Autowired
-	public FileUploadService(RestTemplateBuilder builder) {
-		this.restTemplate = builder.build();
-	}
-
 	public void postFile(String filename, byte[] someByteArray) {
+		
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.MULTIPART_FORM_DATA);
 

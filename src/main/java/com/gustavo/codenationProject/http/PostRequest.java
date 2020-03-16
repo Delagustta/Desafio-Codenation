@@ -2,20 +2,20 @@ package com.gustavo.codenationProject.http;
 
 import java.io.File;
 
+import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.springframework.http.HttpEntity;
 
 public class PostRequest {
 
 	String uri = "https://api.codenation.dev/v1/challenge/dev-ps/submit-solution?token=d7578f4370796d622f47007f82ae5d54f966ee75";
 	String arquivo ="C:\\Users\\Delag\\OneDrive\\Documentos\\Codenation\\answer.json";
 
-	public void submitAnswer() throws Exception {
+	public String submitAnswer() throws Exception {
 
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 		HttpPost uploadFile = new HttpPost(uri);
@@ -29,9 +29,7 @@ public class PostRequest {
 		uploadFile.setEntity(multipart);
 		CloseableHttpResponse response = httpClient.execute(uploadFile);
 		HttpEntity responseEntity = response.getEntity();
-		responseEntity.getBody().toString();
-		
-
+		return responseEntity.getContent().toString();
 	}
 	
 	

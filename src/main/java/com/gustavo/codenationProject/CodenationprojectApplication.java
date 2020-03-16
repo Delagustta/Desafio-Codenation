@@ -27,7 +27,7 @@ public class CodenationprojectApplication {
 		converter.java2Json(resposta);
 
 		
-		String fraseDecifrada = CifraDeCesar.decifrar(Integer.parseInt(resposta.getNumero_casas()), resposta.getCifrado());
+		String fraseDecifrada = CifraDeCesar.decifrar(resposta.getNumero_casas(), resposta.getCifrado());
 		
 		resposta.setDecifrado(fraseDecifrada);
 		resposta.setResumo_criptografico(SHA1.sha1(fraseDecifrada));
@@ -38,7 +38,9 @@ public class CodenationprojectApplication {
 		System.out.println(resposta);
 		
 		System.out.println();
-		enviar.submitAnswer();
+		System.out.println();
+		System.out.println();
+		System.out.println(enviar.submitAnswer());
 		
 		
 		
